@@ -1,0 +1,16 @@
+.homePage {
+    font-family: 'Zilla Slab', serif;
+    display: flex;
+    display: -ms-flexbox;
+    height: 100vh;
+    align-items: center;
+}
+
+.leftContainer, .rightContainer {
+    width: 50%;
+    margin: auto;
+}
+
+.rightContainer {
+    text-align: center;
+}

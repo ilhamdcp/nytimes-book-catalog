@@ -6,31 +6,38 @@ import { TitleType } from "../../constants/TitleType";
 import BookContainer from "@/components/book_container";
 import styles from './page.module.css'
 import axios from "axios";
+import { DominoSpinner } from "react-spinners-kit";
 
 export default function HomePage() {
     const API_KEY = process.env.REACT_APP_API_KEY;
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     console.log(API_KEY);
     const [isLoading, setLoading] = useState(true);
-    useEffect(() => {
-        axios
-        .get(`${BASE_URL}/svc/books/v3/lists/overview.json?api-key=${API_KEY}`)
-        .then((response) => {
-            console.log(response);
-            setLoading(false);
-        }, (e) => {
-            console.error(e);
-            setLoading(false);
-        });
-    });
+    const setStateDelay = async () => {
+        await setTimeout(() => setLoading(false), 5000);
+    }
+    //setStateDelay();
+    // useEffect(() => {
+    //     axios
+    //     .get(`${BASE_URL}/svc/books/v3/lists/overview.json?api-key=${API_KEY}`)
+    //     .then((response) => {
+    //         console.log(response);
+    //         setLoading(false);
+    //     }, (e) => {
+    //         console.error(e);
+    //         setLoading(false);
+    //     });
+    // }, []);
 
     if (isLoading) {
         return(
-            <div>
-                <Title
-                    titleType={TitleType.H1}
-                    title="LOADING"
-                />
+            <div className={styles.homePage}>
+                <div className={styles.loading}>
+                    <DominoSpinner
+                    size={200}
+                    color="#ffffff"
+                    loading={isLoading}/>
+                </div>
             </div>
         );
     }

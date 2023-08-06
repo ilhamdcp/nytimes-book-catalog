@@ -6,6 +6,14 @@
     align-items: center;
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    
+}
+
 .leftContainer, .rightContainer {
     width: 50%;
     margin: auto;
@@ -13,4 +21,14 @@
 
 .rightContainer {
     text-align: center;
+}
+
+.leftContainer {
+    opacity: 0;
+    transition: ease-in 5ms;
+}
+
+.leftContainer:active {
+    opacity: 100%;
+    visibility: visible;
 }
